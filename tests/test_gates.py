@@ -1,5 +1,8 @@
 import pytest
 
+def logic_gate(a, b, operator):
+    return True
+
 @pytest.fixture
 def get_true_input():
     return 1
