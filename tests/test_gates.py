@@ -1,7 +1,5 @@
 import pytest
-
-def logic_gate(a, b, operator):
-    return True
+from model.logic_gate_model_deployment import Logic
 
 @pytest.fixture
 def true_input():
@@ -31,13 +29,23 @@ def xor_gate():
 def nand_gate():
     return 'nand'
 
+def test_and_true(mocker, true_input, and_gate):
+    mocker.patch('model.logic_gate_model_deployment.Logic.logic_gate', return_value=True)
 
-def test_and_true(true_input, and_gate):
-    result = logic_gate(true_input, true_input, and_gate)
+    result = Logic().logic_gate(true_input, true_input, and_gate)
+
+    assert result
+
+def test_or_true(mocker, true_input, false_input):
+    mocker.patch('model.logic_gate_model_deployment.Logic.logic_gate', return_value=True)
+
+    result = Logic().logic_gate(true_input, false_input, or_gate)
 
     assert result
 
-def test_or_true(true_input,false_input):
-    result = logic_gate(true_input, false_input, or_gate)
+def test_or_false(mocker, false_input):
+    mocker.patch('model.logic_gate_model_deployment.Logic.logic_gate', return_value=False)
 
-    assert result
+    result = Logic().logic_gate(false_input, false_input, or_gate)
+
+    assert not result
