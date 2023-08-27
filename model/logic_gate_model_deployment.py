@@ -10,7 +10,7 @@ class Logic():
 
     def __load_model(self):
         """Load the model to self.__model once it's been trainned"""
-        self.__model = joblib.load(os.path.dirname(__file__) + '\\trining\\logic_gates_model.pkl') 
+        self.__model = joblib.load(os.path.dirname(__file__) + '\\training\\logic_gates_model.pkl') 
 
     def logic_gate(self, a, b, operator):
         input_df = pd.DataFrame({
