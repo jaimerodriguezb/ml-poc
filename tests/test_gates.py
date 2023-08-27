@@ -64,6 +64,14 @@ def test_model_or(mocker, true_input, false_input, or_gate, logic):
 
     assert result_1_1 and result_1_0 and result_0_1 and not result_0_0
 
+def test_model_nor(mocker, true_input, false_input, nor_gate, logic):
+    result_1_1 = logic.logic_gate(true_input, true_input, nor_gate)
+    result_1_0 = logic.logic_gate(true_input, false_input, nor_gate)
+    result_0_1 = logic.logic_gate(false_input, true_input, nor_gate)
+    result_0_0 = logic.logic_gate(false_input, false_input, nor_gate)
+
+    assert not result_1_1 and not result_1_0 and not result_0_1 and result_0_0
+
 def test_model_xor(mocker, true_input, false_input, xor_gate, logic):
     result_1_1 = logic.logic_gate(true_input, true_input, xor_gate)
     result_1_0 = logic.logic_gate(true_input, false_input, xor_gate)
