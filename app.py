@@ -45,7 +45,7 @@ resource_fields = api.model('Resource', {
 })
 
 @ns.route('/gates')
-class PhishingApi(Resource):
+class LogicGategApi(Resource):
 
     @api.doc(parser=parser)
     @api.marshal_with(resource_fields)
